@@ -1,0 +1,16 @@
+{
+    "name": "Langflow Development",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "langflow",
+    "workspaceFolder": "/workspace",
+    "forwardPorts": [7860],
+    "postCreateCommand": "pip install -r requirements.txt",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ]
+        }
+    }
+}
