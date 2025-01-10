@@ -1,0 +1,10 @@
+version: '3'
+services:
+  langflow:
+    image: logspace/langflow:latest
+    ports:
+      - "7860:7860"
+    environment:
+      - LANGFLOW_AUTO_LOGIN=false
+    volumes:
+      - ..:/workspace:cached
