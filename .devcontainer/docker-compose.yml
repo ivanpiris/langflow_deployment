@@ -1,11 +1,11 @@
-version: '3.8'
-
 services:
   # Servicio LangFlow
   langflow:
     image: langflowai/langflow:latest
     container_name: langflow_app
-    command: ["sh", "-c", "python import_excel_to_db.py"]
+    environment:
+      # URL de conexión que LangFlow usará por defecto
+      - LANGFLOW_DATABASE_URL=postgresql://myuser:mypassword@db:5432/mydatabase
     ports:
       - "7860:7860"
     volumes:
@@ -15,11 +15,11 @@ services:
       db:
         condition: service_healthy
 
-  # Servicio PostgreSQL
+  # Base de datos PostgreSQL
   db:
     image: postgres:15
     container_name: codespace_db
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_USER: myuser
       POSTGRES_PASSWORD: mypassword
