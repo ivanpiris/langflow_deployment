@@ -5,7 +5,7 @@ services:
   langflow:
     image: langflowai/langflow:latest
     container_name: langflow_app
-    command: ["sh", "-c", "python import_excel_to_db.py && sleep infinity"]
+    command: ["sh", "-c", "python import_excel_to_db.py"]
     ports:
       - "7860:7860"
     volumes:
