@@ -1,10 +1,38 @@
-version: '3'
+version: '3.8'
+
 services:
+  # Servicio LangFlow
   langflow:
     image: langflowai/langflow:latest
+    container_name: langflow_app
+    command: ["sh", "-c", "python import_excel_to_db.py && sleep infinity"]
     ports:
       - "7860:7860"
-    environment:
-      - LANGFLOW_AUTO_LOGIN=false
     volumes:
-      - ..:/workspace:cached
+      - ./:/workspace
+    working_dir: /workspace
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Servicio PostgreSQL
+  db:
+    image: postgres:15
+    container_name: codespace_db
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U myuser -d mydatabase"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata: {}
