@@ -6,14 +6,22 @@
   "service": "langflow",
   "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose",
+
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
+
   "extensions": [
     "ms-python.python",
     "ms-python.vscode-pylance"
   ],
-  "postCreateCommand": "pip install pandas sqlalchemy psycopg2-binary",
+
+  // Se ejecuta solo la primera vez que se crea el Codespace
+  "postCreateCommand": "pip install pandas sqlalchemy psycopg2-binary && python import_excel_to_db.py",
+
+  // Respeta el CMD de la imagen base (LangFlow)
+  "overrideCommand": false,
+
   "forwardPorts": [7860, 5432],
   "remoteUser": "root"
 }
