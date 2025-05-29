@@ -45,6 +45,6 @@ def excel_to_postgres(
 if __name__ == "__main__":
     excel_to_postgres(
         excel_path="datos.xlsx",
-        sheet_name="Sheet1",
+        sheet_name="datos_fabricacion",
         table_name="mi_tabla"
     )
