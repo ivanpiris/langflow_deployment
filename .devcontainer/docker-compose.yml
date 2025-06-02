@@ -1,7 +1,7 @@
 services:
   # Servicio LangFlow
   langflow:
-    image: langflowai/langflow:latest
+    image: langflowai/langflow:1.4.0
     container_name: langflow_app
     environment:
       # URL de conexión que LangFlow usará por defecto
