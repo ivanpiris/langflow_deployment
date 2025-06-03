@@ -6,6 +6,7 @@ services:
     environment:
       # URL de conexión que LangFlow usará por defecto
       - LANGFLOW_DATABASE_URL=postgresql://myuser:mypassword@db:5432/mydatabase
+      - LANGFLOW_AUTO_LOGIN=false
     ports:
       - "7860:7860"
     volumes:
