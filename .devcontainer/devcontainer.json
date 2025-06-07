@@ -1,26 +1,29 @@
 {
   "name": "Codespace con LangFlow y PostgreSQL",
   "dockerComposeFile": [
-    "docker-compose.yml"
+    "../docker-compose.yml"
   ],
   "service": "langflow",
+  "runServices": ["db", "langflow"],
   "workspaceFolder": "/workspace",
-
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
-
   "extensions": [
     "ms-python.python",
     "ms-python.vscode-pylance"
   ],
 
-  // Se ejecuta solo la primera vez que se crea el Codespace
-  "postCreateCommand": "pip install pandas sqlalchemy psycopg2-binary && python import_excel_to_db.py",
+  // Solo la primera vez:
+  "postCreateCommand": [
+    "pip install pandas sqlalchemy psycopg2-binary",
+    "python import_excel_to_db.py"
+  ],
 
-  // Respeta el CMD de la imagen base (LangFlow)
+  // Cada vez que inicias:
+  "postStartCommand": "docker-compose up -d",
+
   "overrideCommand": false,
-
   "forwardPorts": [7860, 5432],
   "remoteUser": "root"
 }
