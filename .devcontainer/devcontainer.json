@@ -5,7 +5,6 @@
   ],
   "service": "langflow",
   "workspaceFolder": "/workspace",
-  "shutdownAction": "stopCompose",
 
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
