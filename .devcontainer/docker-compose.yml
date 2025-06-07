@@ -11,10 +11,6 @@ services:
     volumes:
       - ./:/workspace
     working_dir: /workspace
-    command: >
-      uvicorn langflow.serve:app
-        --host 0.0.0.0
-        --port 7860
     depends_on:
       db:
         condition: service_healthy
