@@ -5,7 +5,6 @@
   ],
   "service": "langflow",
   "runServices": ["db", "langflow"],
-  "workspaceFolder": "/workspace",
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
