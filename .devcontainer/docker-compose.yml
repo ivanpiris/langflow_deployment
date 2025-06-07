@@ -6,12 +6,15 @@ services:
     environment:
       # URL de conexión que LangFlow usará por defecto
       - LANGFLOW_DATABASE_URL=postgresql://myuser:mypassword@db:5432/mydatabase
-      - LANGFLOW_AUTO_LOGIN=false
     ports:
       - "7860:7860"
     volumes:
       - ./:/workspace
     working_dir: /workspace
+    command: >
+      uvicorn langflow.serve:app
+        --host 0.0.0.0
+        --port 7860
     depends_on:
       db:
         condition: service_healthy
