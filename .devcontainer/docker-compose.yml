@@ -3,9 +3,12 @@ services:
     image: langflowai/langflow:1.4.2
     container_name: langflow_app
     environment:  
-      - LANGFLOW_AUTO_LOGIN=true
+      - LANGFLOW_AUTO_LOGIN=false
     ports:
       - "7860:7860"
     working_dir: /workspace
     volumes:
       - ./:/workspace
+      - langflow_data:/root/.langflow
+volumes:
+  langflow_data:
