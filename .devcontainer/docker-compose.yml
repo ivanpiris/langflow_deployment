@@ -1,6 +1,6 @@
 services:
   langflow:
-    image: langflowai/langflow:latest
+    image: langflowai/langflow:1.5.0
     container_name: langflow_app
     environment:  
       - LANGFLOW_AUTO_LOGIN=false
